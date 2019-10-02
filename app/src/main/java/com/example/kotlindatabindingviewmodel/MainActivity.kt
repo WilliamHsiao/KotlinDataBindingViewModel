@@ -10,15 +10,20 @@ import kotlinx.android.synthetic.main.activity_main.*
 import androidx.lifecycle.Observer
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
     lateinit var viewModel: MainViewModel
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        binding.viewModel=viewModel
+        binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main).apply {
+            this.lifecycleOwner=this@MainActivity
+            this.viewModel=viewModel
+        }
 
-        viewModel.buttonText.observe(this,Observer {btn.text=it!!})
-        viewModel.loading.observe(this,Observer {progressBar.visibility = if(it==true) View.VISIBLE else View.GONE })
+//        viewModel.buttonText.observe(this, Observer { btn.text = it!! })
+//        viewModel.loading.observe(
+//            this,
+//            Observer { progressBar.visibility = if (it == true) View.VISIBLE else View.GONE })
+
     }
 }
