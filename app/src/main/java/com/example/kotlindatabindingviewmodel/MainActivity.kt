@@ -15,10 +15,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main).apply {
-            this.lifecycleOwner=this@MainActivity
-            this.viewModel=this@MainActivity.viewModel
-        }
-
+        binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+            .apply {
+                this.lifecycleOwner = this@MainActivity
+                this.viewModel = this@MainActivity.viewModel
+            }
     }
 }
