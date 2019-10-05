@@ -10,19 +10,16 @@ import androidx.databinding.PropertyChangeRegistry
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 
-class MainViewModel(application: Application) : ObservableViewModel(application) {
+class MainViewModel(application: Application):AndroidViewModel(application) {
 
 
-    @Bindable
     val loading: MutableLiveData<Boolean> = MutableLiveData()
-    @Bindable
     val buttonText: MutableLiveData<String> = MutableLiveData()
     private val context: Context = application
 
     init {
         loading.value = false
         buttonText.value = application.getString(R.string.loading)
-        notifyChange(BR.viewModel)
     }
 
     fun click() {

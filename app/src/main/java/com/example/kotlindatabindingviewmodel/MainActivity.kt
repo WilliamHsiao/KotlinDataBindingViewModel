@@ -17,13 +17,8 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main).apply {
             this.lifecycleOwner=this@MainActivity
-            this.viewModel=viewModel
+            this.viewModel=this@MainActivity.viewModel
         }
-
-//        viewModel.buttonText.observe(this, Observer { btn.text = it!! })
-//        viewModel.loading.observe(
-//            this,
-//            Observer { progressBar.visibility = if (it == true) View.VISIBLE else View.GONE })
 
     }
 }
