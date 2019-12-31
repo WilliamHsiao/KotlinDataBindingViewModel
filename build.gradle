@@ -26,9 +26,3 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-ext {
-    archLifecycleVersion = '2.2.0-rc03'
-    androidxArchVersion = '2.0.0'
-    coroutines = '1.2.0'
-}
